@@ -1,6 +1,3 @@
-Information requested for the Technical Challenge for Bling:
-
-
 Name: Raquel Barrio Fierro  
 Next.js version: 14.2.8  
 Estimated time spent: 7 hours
