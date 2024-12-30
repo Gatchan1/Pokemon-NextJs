@@ -1,12 +1,15 @@
 {
-  "name": "raquel-barrio-bling-web-test",
+  "name": "raquel-barrio-pokeapi-nextjs",
   "version": "0.1.0",
+  "homepage": "https://Gatchan1.github.io/Pokemon-NextJs",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d out"
   },
   "dependencies": {
     "next": "14.2.8",
