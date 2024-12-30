@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { useEffect, useState } from "react";
@@ -27,7 +28,7 @@ export default function ImageWithSkeleton({
   };
 
   return (
-    <div className="image-container">
+    <>
       <img
         src={src}
         alt={alt}
@@ -38,6 +39,6 @@ export default function ImageWithSkeleton({
       {/* It's not worth it to optimize the pokemon images using the Image component,
         since it's not free of cost when deployed */}
       {!isLoaded && <div className="image-skeleton"></div>}
-    </div>
+    </>
   );
 }

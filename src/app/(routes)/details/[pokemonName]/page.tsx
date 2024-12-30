@@ -1,6 +1,6 @@
-/* eslint-disable @next/next/no-img-element */
 import { capitalizeFirstLetter } from "../../../lib/helpers";
 import { BaseStat } from "../../../lib/definitions";
+import styles from "./page.module.css";
 import NotFound from "@/app/not-found";
 import { getPokemonDetails } from "@/app/lib/apiCalls";
 import ImageWithSkeleton from "@/app/components/ImageWithSkeleton";
@@ -17,32 +17,77 @@ export default async function PokemonDetails({ params }: { params: { pokemonName
   const name = capitalizeFirstLetter(data.name);
 
   return (
-    <div className="flex-center">
+    <div className={`flex-center ${styles["pokemon-details"]}`}>
       <h1>{name}</h1>
 
-      <div className="images-container">
-        <ImageWithSkeleton src={data.sprites.other["official-artwork"].front_default} alt={data.name + "'s default picture"} title={data.name + "'s default picture"}/>
-        <ImageWithSkeleton src={data.sprites.other["official-artwork"].front_shiny} alt={data.name + "'s shiny picture"} title={data.name + "'s shiny picture"}/>
-      </div>
-      <div>
-        <p>Id number: {data.id}</p>
-        <div>
-          <p>Abilities:</p>
-          <ul>
-            {data.abilities.map((ability: { ability: { name: string } }, i: number) => (
-              <li key={i}>{capitalizeFirstLetter(ability.ability.name)}</li>
-            ))}
-          </ul>
+      <div className={styles["images-container"]}>
+        <div className={`${styles["image-container"]} left-image`}>
+          <ImageWithSkeleton src={data.sprites.other["official-artwork"].front_default} alt={data.name + "'s default picture"} title={data.name + "'s default picture"} />
         </div>
-        <p>Weight: {data.weight}</p>
-        <p>Height: {data.height}</p>
-        <div>
-          <p>Base Stats:</p>
-          <ul>
-            {data.stats.map((stat: BaseStat, i: number) => (
-              <li key={i}>{stat.stat.name + ": " + stat.base_stat}</li>
-            ))}
-          </ul>
+        <div className={`${styles["image-container"]} right-image`}>
+          <ImageWithSkeleton src={data.sprites.other["official-artwork"].front_shiny} alt={data.name + "'s shiny picture"} title={data.name + "'s shiny picture"} />
+        </div>
+      </div>
+
+      <div className="pokemon-details">
+        <div className="left-side vertical flex-center">
+          <div className="stat-bg round-stat flex-center m-bottom-10">
+            <p>
+              <b>Id number:</b>
+            </p>
+            <p>{data.id}</p>
+          </div>
+
+          <div className="horizontal stat-bg">
+            <div className="stat flex-center">
+              <p>Weight:</p>
+              <p>{data.weight}</p>
+            </div>
+
+            <div className="stat end flex-center">
+              <p>Height:</p>
+              <p>{data.height}</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="right-side vertical flex-center">
+          <table className="stat single stat-bg m-bottom-10">
+            <thead>
+              <tr>
+                <th colSpan={data.stats.length}>Base Stats</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                {data.stats.map((stat: BaseStat, i: number) => (
+                  <td key={i}>
+                    <div className="flex-center">
+                      <p>{capitalizeFirstLetter(stat.stat.name) + ":"}</p>
+                      <p>{stat.base_stat}</p>
+                    </div>
+                  </td>
+                ))}
+              </tr>
+            </tbody>
+          </table>
+
+          <table className="stat single stat-bg">
+            <thead>
+              <tr>
+                <th colSpan={data.abilities.length}>Abilities</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                {data.abilities.map((ability: { ability: { name: string } }, i: number) => (
+                  <td key={i}>
+                    <div className="flex-center">{capitalizeFirstLetter(ability.ability.name)}</div>
+                  </td>
+                ))}
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>

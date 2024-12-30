@@ -28,7 +28,8 @@ export default function RootLayout({
         </div>
         <footer className="flex-center">
           <p>
-            Created by <a href="https://github.com/Gatchan1">Raquel</a>. Thanks for checking this site!
+            Created by <a href="https://github.com/Gatchan1">Raquel</a> in 2024. Thanks for checking this site!{" →"} 
+            <a href="https://github.com/Gatchan1/Pokemon-NextJs">Repo link</a>←
           </p>
         </footer>
       </body>

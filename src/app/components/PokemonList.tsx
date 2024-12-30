@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { PokemonListItem } from "../lib/definitions";
 import { getPokemonList } from "../lib/apiCalls";
+import { capitalizeFirstLetter } from "../lib/helpers";
 
 export default function PokemonList() {
   const [list, setList] = useState<PokemonListItem[]>([]);
@@ -57,14 +58,15 @@ export default function PokemonList() {
 
   return (
     <div className="flex-center m-y-40">
-      <ul >
+      <ul className="pokemon-list">
         {list.map((item: PokemonListItem) => (
           <li key={item.name}>
-            <Link href={"/details/" + item.name}>{item.name}</Link>
+            <Link href={"/details/" + item.name}>{capitalizeFirstLetter(item.name)}</Link>
           </li>
         ))}
       </ul>
-      <button className="m-top-20" disabled={loading || disabled} onClick={handleLoadMore}>Load More</button>
+      <button className="m-top-20 m-bottom-50" disabled={loading || disabled} onClick={handleLoadMore}>
+        {disabled ? "We've reached the end" : "Load More"}</button>
       {loading && <p>Loading more Pokémon...</p>}
     </div>
   );
