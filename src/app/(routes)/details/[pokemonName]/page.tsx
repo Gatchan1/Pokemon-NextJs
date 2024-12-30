@@ -2,8 +2,19 @@ import { capitalizeFirstLetter } from "../../../lib/helpers";
 import { BaseStat } from "../../../lib/definitions";
 import styles from "./page.module.css";
 import NotFound from "@/app/not-found";
-import { getPokemonDetails } from "@/app/lib/apiCalls";
+import { getPokemonDetails, getCompletePokemonList } from "@/app/lib/apiCalls";
 import ImageWithSkeleton from "@/app/components/ImageWithSkeleton";
+
+export async function generateStaticParams() {
+  // Fetch the list of Pokémon from PokeAPI
+  const data = await getCompletePokemonList(); // This should fetch a list of Pokémon names
+  const pokemonNames = data.results.map((pokemon: { name: string }) => pokemon.name);
+
+  // Return the params for each Pokémon
+  return pokemonNames.map((name) => ({
+    pokemonName: name,
+  }));
+}
 
 export default async function PokemonDetails({ params }: { params: { pokemonName: string } }) {
   let data;

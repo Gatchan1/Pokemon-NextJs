@@ -12,3 +12,8 @@ export const getPokemonList = async (url: string = baseurl) : Promise<PokemonLis
     const response = await fetch(url);
     return await response.json();
 }
+
+export const getCompletePokemonList = async (url: string = baseurl) : Promise<PokemonList> => {
+    const response = await fetch(url + "?limit=2000");
+    return await response.json();
+}
