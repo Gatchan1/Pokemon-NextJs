@@ -6,11 +6,9 @@ import { getPokemonDetails, getCompletePokemonList } from "@/app/lib/apiCalls";
 import ImageWithSkeleton from "@/app/components/ImageWithSkeleton";
 
 export async function generateStaticParams() {
-  // Fetch the list of Pokémon from PokeAPI
-  const data = await getCompletePokemonList(); // This should fetch a list of Pokémon names
+  const data = await getCompletePokemonList();
   const pokemonNames = data.results.map((pokemon: { name: string }) => pokemon.name);
-
-  // Return the params for each Pokémon
+  
   return pokemonNames.map((name) => ({
     pokemonName: name,
   }));
