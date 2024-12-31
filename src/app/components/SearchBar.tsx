@@ -14,10 +14,13 @@ export default function SearchBar() {
   }
 
   const submitSearch = () => {
-    router.push("details/" + searchValue);
+    router.push("details/" + searchValue.toLowerCase());
   };
   /* Possible future improvement: figure out if it's a working endpoint before
   navigating to the page. If it's not, don't navigate anywhere, just show an alert. */
+
+  /* Also... I should really turn this into a real search bar, 
+  handling a complete list of the pokemon names */
 
   return (
     <div id="search-bar">
