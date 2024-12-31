@@ -1,4 +1,4 @@
-This was my first project done using **Next.js**.
+Hello! This was my first project done using **Next.js**.
 I explored the distinction between server side and client side rendering, css modules usage, and image optimization.
 
 The project is written in **TypeScript** and makes API calls to the famous **PokeApi** (using native fetch).
@@ -6,10 +6,10 @@ The project is written in **TypeScript** and makes API calls to the famous **Pok
 The app has a search bar, lazy loading for the pokemon list, and image skeletons for a better user experience.
 
 ---
-
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+### Check out the deploy at https://gatchan1.github.io/Pokemon-NextJs/
 
-First, run the development server:
+But if you want to run it locally, clone this repo and run the development server:
 
 ```bash
 npm run dev
