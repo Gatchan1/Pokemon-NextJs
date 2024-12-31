@@ -1,7 +1,7 @@
 {
   "name": "raquel-barrio-pokeapi-nextjs",
   "version": "0.1.0",
-  "homepage": "https://Gatchan1.github.io/Pokemon-NextJs",
+  "homepage": "https://gatchan1.github.io/Pokemon-NextJs",
   "private": true,
   "scripts": {
     "dev": "next dev",
